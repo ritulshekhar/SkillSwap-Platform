@@ -3,16 +3,19 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
+import matchRoutes from './routes/matchRoutes.js';
 
 dotenv.config();
 
-const app = express(); // ✅ app must be initialized BEFORE app.use()
+const app = express(); // ✅ app is created here
 
 app.use(cors());
 app.use(express.json());
 
-// ✅ routes come AFTER app is created
+// ✅ Define routes AFTER app is initialized
 app.use('/api/auth', authRoutes);
+app.use('/api/match', matchRoutes);
+
 app.get('/test', (req, res) => {
   res.json({ message: 'Backend is working!' });
 });
