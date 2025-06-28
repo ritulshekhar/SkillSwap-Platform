@@ -1,15 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Register from './pages/Register';
+import MatchList from './pages/MatchList';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
+import Register from './pages/Register';
+import Navbar from './components/Navbar'; // if you have one
 
 function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/matches" element={<MatchList />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );
